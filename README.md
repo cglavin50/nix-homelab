@@ -1,6 +1,6 @@
 # Nix-Homelab
 
-This repository hosts the configuration for my nixos-based homelab running k3s. Currently, I am running this on 3x Lenovo M920q ThinkCentre nodes (256GB nvme storage, 16gb DDR4 ram, i-8500T).
+This repository hosts the configuration for my nixos-based homelab running k3s. Currently, I am running this on 3x Lenovo M920q ThinkCentre nodes (256GB nvme storage, 16gb DDR4 ram, i-8500T). The root `flake.nix` also configures a developer shell, adding `colmena`, `sops`, and `age` for nixos-management.
 
 **Credit:** This project is heavily inspired by [Dreams of Autonomy](https://www.youtube.com/@dreamsofautonomy) - specifically the [youtube video](https://www.youtube.com/watch?v=2yplBzPCghA&t=315s) and corresponding [repo](https://github.com/dreamsofautonomy/homelab/tree/main).
 
@@ -37,3 +37,9 @@ security.sudo = {
 };
 nix.settings.trusted-users = [ "root" "cooper" ]; # replace with your user
 ```
+
+## K3s
+
+This homelab follows the [nix k3s usage guide]()https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/cluster/k3s/docs/USAGE.md#multi-node) for a 3-node HA cluster.
+
+

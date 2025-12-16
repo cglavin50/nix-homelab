@@ -1,0 +1,18 @@
+keys:
+  # personal admin key
+  - &admin_cooper age1q4amzhu35vv98c8usgamjjhwhn5q82sulmzdmcdhkh2zq0a3vaesxvv9y4
+
+  # Node keys
+  - &alpha age1arllsk3da07lj6ers0cdvtaz4qqlg7lq7h8k7nmp2ejtwm29pgcs0lun67
+  - &bravo age1jksv6jmy6flf0cv3grctntgs7kp53c7d72690qsxrxvawxz7nu2sttfklz
+  - &charlie age19wdth3zh940spdq34gweu6feugejlzxeczlgjvf92nygg6tkf3lq2aprdu
+
+creation_rules:
+  # k3s server token (all servers need access)
+  - path_regex: secrets/k3s-token.yaml$
+    key_groups:
+        - age:
+          - *admin_cooper
+          - *alpha
+          - *bravo
+          - *charlie

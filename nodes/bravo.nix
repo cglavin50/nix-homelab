@@ -1,9 +1,9 @@
-{
-  name,
-  nodes,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
+  imports = [
+    ./hardware/bravo-hardware.nix
+    ./k3s-config.nix
+  ];
+
   networking = {
     hostName = "bravo";
     interfaces.eno2.ipv4.addresses = [
@@ -19,7 +19,10 @@
     targetUser = "cooper";
   };
 
-  imports = [
-    ./hardware/bravo-hardware.nix
-  ];
+  services.k3s = {
+    enable = true;
+    role = "server";
+    tokenFile = config.sops.secrets.k3s-token.path;
+    serverAddr = "https://192.168.1.50:6443";
+  };
 }
