@@ -1,0 +1,41 @@
+name: "Base Checks"
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  nix-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: cachix/install-nix-action@v31
+        with: 
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Check Flake
+        run: |
+          nix flake check
+
+      - name: Format check (alejandra)
+        run: |
+          nix run nixpkgs#alejandra -- --check .
+
+      - name: Static Scanning (statix)
+        run: |
+          nix run nixpkgs#statix -- check . -i nodes/hardware
+
+  secret-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
