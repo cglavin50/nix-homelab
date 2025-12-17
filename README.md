@@ -42,4 +42,4 @@ nix.settings.trusted-users = [ "root" "cooper" ]; # replace with your user
 
 This homelab follows the [nix k3s usage guide]()https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/cluster/k3s/docs/USAGE.md#multi-node) for a 3-node HA cluster.
 
-
+Secret management is configured with [sops](https://github.com/Mic92/sops-nix), using [age](https://github.com/FiloSottile/age) for encryption. 

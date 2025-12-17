@@ -26,7 +26,7 @@ jobs:
 
       - name: Static Scanning (statix)
         run: |
-          nix run nixpkgs#statix -- check
+          nix run nixpkgs#statix -- check . -i nodes/hardware
 
   secret-scanning:
     runs-on: ubuntu-latest

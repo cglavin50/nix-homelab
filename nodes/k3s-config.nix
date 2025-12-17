@@ -1,4 +1,4 @@
-{...}: {
+_: {
   # k3s firewall rules
   networking.firewall.allowedTCPPorts = [
     6443 # k3s API communication
