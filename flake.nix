@@ -25,6 +25,9 @@
         pkgs.sops
         pkgs.age
         pkgs.ssh-to-age
+
+        # formating/linting
+        pkgs.statix
       ];
 
       shellHook = ''
@@ -52,6 +55,7 @@
           sops-nix.nixosModules.sops # give all attributes sops access
         ];
 
+        # define sops config and k3s-token secret
         sops = {
           age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
           secrets.k3s-token = {

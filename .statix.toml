@@ -1,0 +1,4 @@
+ignore = [
+  "nodes/hardware/*.nix",
+  "**/*-hardware.nix",
+]
