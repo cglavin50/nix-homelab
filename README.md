@@ -43,3 +43,10 @@ nix.settings.trusted-users = [ "root" "cooper" ]; # replace with your user
 This homelab follows the [nix k3s usage guide](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/networking/cluster/k3s/docs/USAGE.md#multi-node) for a 3-node HA cluster.
 
 Secret management is configured with [sops](https://github.com/Mic92/sops-nix), using [age](https://github.com/FiloSottile/age) for encryption. 
+
+### FluxCD
+
+This repository implements [FluxCD](https://fluxcd.io/) for a GitOps-based approach (read more [here](https://www.gitops.tech/#what-is-gitops)).
+
+Initial bootstrapping is done with:
+`lux bootstrap github --owner=cglavin50 --repository=nix-homelab --branch=main --personal --path=k8s`(requires kubectl to be configured)
