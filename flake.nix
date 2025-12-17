@@ -27,6 +27,9 @@
         pkgs.ssh-to-age
 
         # formating/linting
+        pkgs.pre-commit
+        pkgs.gitleaks
+        pkgs.alejandra
         pkgs.statix
       ];
 

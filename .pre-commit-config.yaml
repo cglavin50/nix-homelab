@@ -1,0 +1,21 @@
+repos:
+  # ------------------------
+  # Gitleaks
+  # ------------------------
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.0  # use latest stable
+    hooks:
+      - id: gitleaks
+        args: ["--redact"]
+
+  # ------------------------
+  # Statix
+  # ------------------------
+  - repo: local
+    hooks:
+      - id: statix
+        name: statix
+        entry: nix run nixpkgs#statix -- check
+        language: system
+        types: [nix]
+

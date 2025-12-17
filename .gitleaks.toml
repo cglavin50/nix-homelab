@@ -1,0 +1,5 @@
+[[rules]]
+id = "ignore-ssh-public-keys"
+description = "Ignore SSH public keys"
+regex = "ssh-(rsa|ed25519|dss) AAAA[0-9A-Za-z+/=]+"
+allowlist.paths = ["nodes/configuration.nix"]
