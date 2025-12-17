@@ -21,10 +21,14 @@
     devShells.${system}.default = pkgs.mkShell {
       packages = [
         colmena.packages.${system}.colmena
-        pkgs.kubectl
         pkgs.sops
         pkgs.age
         pkgs.ssh-to-age
+
+        # k8s
+        pkgs.kubectl
+        pkgs.fluxcd
+        pkgs.helm
 
         # formating/linting
         pkgs.pre-commit

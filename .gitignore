@@ -3,3 +3,6 @@
 
 # sops secrets
 /run/secrets/*
+
+# k3s
+k3s.yaml
