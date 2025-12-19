@@ -6,3 +6,4 @@ resources:
   - release.yaml
   - cloudflare-secret.enc.yaml
   - letsencrypt-issuer.yaml
+  - wildcard-cert.yaml
