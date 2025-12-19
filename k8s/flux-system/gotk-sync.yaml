@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./k8s
+  path: ./k8s # since we are single-cluster, can get away with single path watch
   prune: true
   sourceRef:
     kind: GitRepository

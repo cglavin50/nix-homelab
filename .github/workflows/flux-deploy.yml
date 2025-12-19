@@ -1,0 +1,20 @@
+name: flux-pr-preview
+
+on:
+  pull_request:
+    types: [opened, synchronized, reopened, closed]
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull_requests: write
+
+jobs:
+  pr-preview:
+    runs-on: ubuntu-latest
+    if: github.actor == 'cglavin50'
+    steps:
+      - uses: actions/checkout@v6
+
+      - name

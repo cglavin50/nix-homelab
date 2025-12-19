@@ -16,3 +16,10 @@ creation_rules:
           - *alpha
           - *bravo
           - *charlie
+  - path_regex: k8s/.*\.yaml
+    key_groups:
+        - age:
+          - *admin_cooper
+          - *alpha
+          - *bravo
+          - *charlie
