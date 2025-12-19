@@ -4,3 +4,5 @@ resources:
   - namespace.yaml
   - source.yaml
   - release.yaml
+  - cloudflare-secret.enc.yaml
+  - letsencrypt-issuer.yaml
