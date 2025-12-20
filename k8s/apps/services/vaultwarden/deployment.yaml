@@ -27,7 +27,7 @@ spec:
         - name: DOMAIN
           value: "https://vault.cglavin50.com"
         - name: SIGNUPS_ALLOWED
-          value: "true"  # Disable after creating your account!
+          value: "false"
         - name: WEBSOCKET_ENABLED
           value: "true"
         - name: ADMIN_TOKEN
