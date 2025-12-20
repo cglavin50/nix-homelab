@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: wildcard-tls
   issuerRef:
-    name: letsencrypt-staging  # Start with staging to test
+    name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
     - "cglavin50.com"
