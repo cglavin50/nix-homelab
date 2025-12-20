@@ -2,14 +2,14 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: wildcard-cert
-  namespace: cert-manager
+  namespace: kube-system # give Traefik access
 spec:
   secretName: wildcard-tls
   issuerRef:
     name: letsencrypt-staging  # Start with staging to test
     kind: ClusterIssuer
   dnsNames:
-    - "cglavin50.com"  # ⚠️ CHANGE THIS
-    - "*.cglavin50.com"  # ⚠️ CHANGE THIS
+    - "cglavin50.com"
+    - "*.cglavin50.com"
   duration: 2160h # 90 days
   renewBefore: 720h # 30 days before expiry
