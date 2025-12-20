@@ -35,6 +35,9 @@
         pkgs.gitleaks
         pkgs.alejandra
         pkgs.statix
+
+        # misc
+        pkgs.openssl # key/token generation
       ];
 
       shellHook = ''

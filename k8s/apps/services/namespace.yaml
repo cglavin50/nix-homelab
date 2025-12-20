@@ -1,0 +1,5 @@
+# Services namespace, hosting basic apps
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: services
