@@ -15,7 +15,8 @@ repos:
     hooks:
       - id: statix
         name: statix
-        entry: nix run nixpkgs#statix -- check
+        entry: nix run nixpkgs#statix -- check . --config .statix.toml
+        pass_filenames: false
         language: system
         types: [nix]
 

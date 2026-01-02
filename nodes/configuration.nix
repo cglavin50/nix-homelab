@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -14,14 +18,25 @@
   # networking/ssh
   networking = {
     networkmanager.enable = true;
-    firewall.enable = true;
     nameservers = ["8.8.8.8"];
     defaultGateway = "192.168.1.1";
+
+    firewall = {
+      enable = true;
+      allowedUDPPorts = [41641];
+      trustedInterfaces = ["tailscale0"];
+    };
   };
 
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
+  };
+
+  # tailscale
+  services.tailscale = {
+    enable = true;
+    authKeyFile = config.sops.secrets.tailscale-auth.path;
   };
 
   # TODO: create a dedicated deploy user
@@ -47,4 +62,6 @@
     vim
     git
   ];
+
+  system.stateVersion = "26.05";
 }

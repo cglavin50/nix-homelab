@@ -9,7 +9,7 @@ keys:
 
 creation_rules:
   # k3s server token (all servers need access)
-  - path_regex: secrets/k3s-token.yaml$
+  - path_regex: secrets/.*\.yaml
     key_groups:
         - age:
           - *admin_cooper

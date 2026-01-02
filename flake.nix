@@ -38,6 +38,7 @@
 
         # misc
         pkgs.openssl # key/token generation
+        pkgs.tailscale
       ];
 
       shellHook = ''
@@ -70,6 +71,9 @@
           age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
           secrets.k3s-token = {
             sopsFile = ./secrets/k3s-token.yaml;
+          };
+          secrets.tailscale-auth = {
+            sopsFile = ./secrets/tailscale-auth.yaml;
           };
         };
       };
