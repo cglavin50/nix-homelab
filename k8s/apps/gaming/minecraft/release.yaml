@@ -19,17 +19,28 @@ spec:
     minecraftServer:
       eula: true  # Accept EULA
       version: "LATEST"  # or specific version like "1.20.1"
-      type: "VANILLA"  # VANILLA, SPIGOT, PAPER, FORGE, etc.
       difficulty: normal
       whitelist: ""
       ops: ""
       motd: "Welcome to my K3s Minecraft Server!"
       maxPlayers: 20
-      viewDistance: 10
+      viewDistance: 16
       gameMode: survival
       pvp: true
       serviceType: LoadBalancer  # or NodePort
-      
+
+      # mod configuration
+      type: "FABRIC"  # VANILLA, SPIGOT, PAPER, FORGE, etc.
+      fabricLauncherVersion: "LATEST"
+      modrinth:
+        projects:
+          - lithium
+          - krypton # help with rubberbanding
+          - ferrite-core # memory usage
+          - carpet
+          # - servercore
+          - c2me-fabric
+
     # Resource limits
     resources:
       requests:
