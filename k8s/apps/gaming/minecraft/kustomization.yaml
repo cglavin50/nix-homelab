@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - source.yaml
   - release.yaml
+  - rcon-release.yaml
+  # - rcon-route.yaml
+  - rcon-secret.yaml

@@ -49,4 +49,6 @@ Secret management is configured with [sops](https://github.com/Mic92/sops-nix), 
 This repository implements [FluxCD](https://fluxcd.io/) for a GitOps-based approach (read more [here](https://www.gitops.tech/#what-is-gitops)).
 
 Initial bootstrapping is done with:
-`lux bootstrap github --owner=cglavin50 --repository=nix-homelab --branch=main --personal --path=k8s`(requires kubectl to be configured)
+`flux bootstrap github --owner=cglavin50 --repository=nix-homelab --branch=main --personal --path=k8s`(requires kubectl to be configured)
+
+From there, development is handled via flux reconciliation on pushes to main

@@ -41,14 +41,19 @@ spec:
           # - servercore
           - c2me-fabric
 
-    # Resource limits
+      rcon:
+        enabled: true
+        port: 25575
+        existingSecret: minecraft-rcon-secret
+        secretKey: rcon-password
+
+        # Resource limits: 8gb + 5cores, burst to 12gi (no cpu limit)
     resources:
       requests:
-        memory: 2Gi
-        cpu: 1000m
+        memory: 8Gi
+        cpu: 5000m
       limits:
-        memory: 4Gi
-        cpu: 2000m
+        memory: 12Gi
     
     # Persistence for world data
     persistence:
