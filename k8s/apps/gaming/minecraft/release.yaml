@@ -22,7 +22,7 @@ spec:
       difficulty: normal
       whitelist: ""
       ops: ""
-      motd: "Welcome to my K3s Minecraft Server!"
+      motd: "Coops Minecraft Server :)"
       maxPlayers: 20
       viewDistance: 16
       gameMode: survival
@@ -40,6 +40,9 @@ spec:
           - carpet
           # - servercore
           - c2me-fabric
+
+          # gameplay mods
+          # - simple-voice-chat
 
       rcon:
         enabled: true
