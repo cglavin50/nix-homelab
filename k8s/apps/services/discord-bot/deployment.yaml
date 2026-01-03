@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-bot
+  namespace: services
+  labels:
+    app: discord-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discord-bot
+  template:
+    metadata:
+      labels:
+        app: discord-bot
+    spec:
+      containers:
+        - name: bot
+          image: cglavin50/homelab-discord-bot:latest
+          env:
+            - name: DISCORD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: discord-secret
+                  key: DISCORD_TOKEN
+            - name: GUILD_ID
+              valueFrom:
+                secretKeyRef:
+                  name: discord-secret
+                  key: GUILD_ID
+            - name: TAILSCALE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: discord-secret
+                  key: TAILSCALE_KEY
+            - name: TAILNET_ID
+              valueFrom:
+                secretKeyRef:
+                  name: discord-secret
+                  key: TAILNET_ID
