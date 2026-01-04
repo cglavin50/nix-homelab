@@ -15,6 +15,33 @@ spec:
         namespace: gaming
       interval: 12h
   values:
+    # health probe config
+    livenessProbe:
+      command:
+        - mc-health
+      initialDelaySeconds: 30
+      periodSeconds: 60        # 5s → 60s (stop hammering the server)
+      failureThreshold: 3      # 20 → 3 (more sensible)
+      successThreshold: 1
+      timeoutSeconds: 10       # 1s → 10s (CRITICAL - allows for GC/autosave pauses)
+ 
+    readinessProbe:
+      command:
+        - mc-health
+      initialDelaySeconds: 30
+      periodSeconds: 60        # 5s → 60s
+      failureThreshold: 3      # 20 → 3
+      successThreshold: 1
+      timeoutSeconds: 10       # 1s → 10s
+  
+    startupProbe:
+      command:
+        - mc-health
+      enabled: true            # false → true (helps during startup)
+      failureThreshold: 30
+      periodSeconds: 10
+      timeoutSeconds: 10       # Add explicit timeout
+
     # Minecraft server configuration
     minecraftServer:
       eula: true  # Accept EULA
@@ -29,17 +56,36 @@ spec:
       pvp: true
       serviceType: LoadBalancer  # or NodePort
 
+      # service resources
+      memory: 10G
+      jvmXXOpts: >-
+        -XX:+UnlockExperimentalVMOptions
+        -XX:MaxMetaspaceSize=512M
+        -XX:MaxDirectMemorySize=512M
+        -XX:+UseG1GC
+        -XX:G1NewSizePercent=40
+        -XX:G1MaxNewSizePercent=50
+        -XX:G1HeapRegionSize=16M
+        -XX:G1ReservePercent=15
+        -XX:InitiatingHeapOccupancyPercent=40
+        -XX:SurvivorRatio=8
+        -XX:MaxTenuringThreshold=1
+
       # mod configuration
       type: "FABRIC"  # VANILLA, SPIGOT, PAPER, FORGE, etc.
       fabricLauncherVersion: "LATEST"
       modrinth:
         projects:
+          - fabric-api
           - lithium
           - krypton # help with rubberbanding
           - ferrite-core # memory usage
           - carpet
           # - servercore
-          - c2me-fabric
+          # - c2me-fabric # causing multi-thread chunk loading
+
+          # troubleshooting
+          - spark
 
           # gameplay mods
           # - simple-voice-chat
@@ -50,13 +96,13 @@ spec:
         existingSecret: minecraft-rcon-secret
         secretKey: rcon-password
 
-        # Resource limits: 8gb + 5cores, burst to 12gi (no cpu limit)
+    # Resource limits: 8gb + 5cores, burst to 12gi (no cpu limit)
     resources:
       requests:
         memory: 8Gi
         cpu: 5000m
       limits:
-        memory: 12Gi
+        memory: 10Gi
     
     # Persistence for world data
     persistence:
