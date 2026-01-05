@@ -15,7 +15,10 @@
     ...
   }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true; # for terraform
+    };
   in {
     # Development shell output
     devShells.${system}.default = pkgs.mkShell {
@@ -24,6 +27,8 @@
         pkgs.sops
         pkgs.age
         pkgs.ssh-to-age
+
+        pkgs.terraform
 
         # k8s
         pkgs.kubectl

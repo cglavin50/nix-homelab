@@ -6,3 +6,10 @@
 
 # k3s
 k3s.yaml
+
+# terraform
+*.tfvars
+/terraform/tfvars
+/terraform/.terraform
+*.tfstate
+*.tfstate.backup

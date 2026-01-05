@@ -52,3 +52,17 @@ Initial bootstrapping is done with:
 `flux bootstrap github --owner=cglavin50 --repository=nix-homelab --branch=main --personal --path=k8s`(requires kubectl to be configured)
 
 From there, development is handled via flux reconciliation on pushes to main
+
+## Cloudflare
+
+The `./terraform/` directory contains the terraform code used for all our Cloudflare configuration. This includes DNS records, as well as a Cloudflare Zero Trust Tunnel to provide public access to services like the minecraft server.
+
+The Cloudflare Provider requires an API Token with following permissions:
+
+  - Account Permissions:
+    - Cloudflare Tunnel: `Edit`
+    - Access: Apps and Policies: `Edit`
+  - Zone Permissions (scoped to domain):
+    - DNS: `Edit`
+
+The terraform code also creates a Kubernetes secret for the tunnel secret, which allows us to connect and manage the tunnel within our cluster.
