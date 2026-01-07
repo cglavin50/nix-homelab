@@ -88,6 +88,7 @@ spec:
           - spark
 
           # gameplay mods
+          - fabric-custom-names
           # - simple-voice-chat
 
       rcon:
