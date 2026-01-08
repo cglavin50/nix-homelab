@@ -59,17 +59,37 @@ spec:
       # service resources
       memory: 10G
       jvmXXOpts: >-
-        -XX:+UnlockExperimentalVMOptions
-        -XX:MaxMetaspaceSize=512M
-        -XX:MaxDirectMemorySize=512M
         -XX:+UseG1GC
+        -XX:+ParallelRefProcEnabled
+        -XX:MaxGCPauseMillis=50
+        -XX:+UnlockExperimentalVMOptions
+        -XX:+DisableExplicitGC
         -XX:G1NewSizePercent=40
-        -XX:G1MaxNewSizePercent=50
+        -XX:G1MaxNewSizePercent=60
         -XX:G1HeapRegionSize=16M
-        -XX:G1ReservePercent=15
+        -XX:G1ReservePercent=20
+        -XX:G1HeapWastePercent=5
+        -XX:G1MixedGCCountTarget=4
         -XX:InitiatingHeapOccupancyPercent=40
+        -XX:G1MixedGCLiveThresholdPercent=85
+        -XX:G1RSetUpdatingPauseTimePercent=5
         -XX:SurvivorRatio=8
-        -XX:MaxTenuringThreshold=1
+        -XX:+PerfDisableSharedMem
+        -XX:MaxTenuringThreshold=15
+        -XX:+UseStringDeduplication
+
+      # jvmXXOpts: >-
+      #   -XX:+UnlockExperimentalVMOptions
+      #   -XX:MaxMetaspaceSize=512M
+      #   -XX:MaxDirectMemorySize=1G
+      #   -XX:+UseG1GC
+      #   -XX:G1NewSizePercent=40
+      #   -XX:G1MaxNewSizePercent=50
+      #   -XX:G1HeapRegionSize=16M
+      #   -XX:G1ReservePercent=15
+      #   -XX:InitiatingHeapOccupancyPercent=40
+      #   -XX:SurvivorRatio=8
+      #   -XX:MaxTenuringThreshold=1
 
       # mod configuration
       type: "FABRIC"  # VANILLA, SPIGOT, PAPER, FORGE, etc.
@@ -88,6 +108,7 @@ spec:
           - spark
 
           # gameplay mods
+          - luckperms
           - fabric-custom-names
           # - simple-voice-chat
 
@@ -100,9 +121,6 @@ spec:
     # Resource limits: 8gb + 5cores, burst to 12gi (no cpu limit)
     resources:
       requests:
-        memory: 8Gi
-        cpu: 5000m
-      limits:
         memory: 10Gi
     
     # Persistence for world data
