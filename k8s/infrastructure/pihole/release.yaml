@@ -18,19 +18,12 @@ spec:
     replicaCount: 1
 
     serviceWeb:
-      type: LoadBalancer
-      annotations:
-        metallb.universe.tf/loadBalancerIPs: 192.168.1.51  # ← change to your chosen IP
+      type: ClusterIP
       port:
         http: 80
-        https: 443
 
     ingress:
-      enabled: true
-      ingressClassName: traefik   # k3s ships Traefik by default
-      hosts:
-        - pihole.cglavin50.com
-      path: /
+      enabled: false
 
     serviceDns:
       type: LoadBalancer
