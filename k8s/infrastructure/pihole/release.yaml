@@ -25,21 +25,8 @@ spec:
     ingress:
       enabled: false
 
-    serviceDns:
-      type: LoadBalancer
-      annotations:
-        metallb.universe.tf/loadBalancerIPs: 192.168.1.51  # ← same IP, different ports
-      port:
-        dns: 53
-
     adminPasswordSecret: pihole-secret
 
-    # The critical bit — local DNS rewrite
     customDnsEntries:
       - "192.168.1.50 vault.cglavin50.com"
       - "192.168.1.50 cglavin50.com"
-
-    # Wildcard for all future subdomains
-    dnsmasq:
-      customDnsEntries:
-        - address=/cglavin50.com/192.168.1.50
