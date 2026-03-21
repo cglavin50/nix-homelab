@@ -7,3 +7,4 @@ resources:
   - release.yaml
   - secret.yaml
   - route.yaml
+  - dns-service.yaml
