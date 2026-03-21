@@ -17,12 +17,6 @@ spec:
   values:
     replicaCount: 1
 
-    persistence:
-      enabled: true
-      existingClaim: pihole-data
-      size: 10Gi
-      storageClassName: local-path
-
     serviceWeb:
       type: ClusterIP
       port:
