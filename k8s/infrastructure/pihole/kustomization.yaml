@@ -9,3 +9,6 @@ resources:
   - release.yaml
   - route.yaml
   - dns-service.yaml
+
+patchesStrategicMerge:
+  - deployment-patch.yaml
