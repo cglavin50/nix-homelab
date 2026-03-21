@@ -5,7 +5,7 @@ resources:
   - namespace.yaml 
   - source.yaml
   - pvc.yaml
-  - secret.yaml
+  - secret-password.yaml
   - release.yaml
   - route.yaml
   - dns-service.yaml
