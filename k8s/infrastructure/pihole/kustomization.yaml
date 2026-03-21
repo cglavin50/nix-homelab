@@ -17,4 +17,16 @@ patchesJson6902:
       kind: Deployment
       name: pihole
       namespace: pihole
-    patch: deployment-patch.json
+    patch: |-
+      [
+        {
+          "op": "replace",
+          "path": "/spec/template/spec/volumes/0",
+          "value": {
+            "name": "config",
+            "persistentVolumeClaim": {
+              "claimName": "pihole-data"
+            }
+          }
+        }
+      ]
