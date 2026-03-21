@@ -18,17 +18,13 @@ spec:
     replicaCount: 1
 
     hostNetwork: true
+    dnsmasq:
+      upstreamServers: []
 
     serviceWeb:
       type: ClusterIP
       port:
         http: 80
-
-    serviceDns:
-      type: ClusterIP
-      port:
-        udp: 53
-        tcp: 53
 
     ingress:
       enabled: false
