@@ -17,10 +17,6 @@ spec:
   values:
     replicaCount: 1
 
-    hostNetwork: true
-    dnsmasq:
-      upstreamServers: []
-
     serviceWeb:
       type: ClusterIP
       port:
