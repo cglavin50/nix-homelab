@@ -4,7 +4,8 @@ kind: Kustomization
 resources:
   - namespace.yaml 
   - source.yaml
-  - release.yaml
+  - pvc.yaml
   - secret.yaml
+  - release.yaml
   - route.yaml
   - dns-service.yaml
