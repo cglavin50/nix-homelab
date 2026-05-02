@@ -29,7 +29,7 @@ resource "cloudflare_dns_record" "root" {
   zone_id = var.cloudflare_zone_id
   name    = "@"
   ttl     = 1
-  content = "192.168.1.50" # LAN access
+  content = "10.0.0.50" # LAN access
   type    = "A"
   proxied = false
   comment = "Home server LAN for non-tunneled services"
@@ -39,7 +39,7 @@ resource "cloudflare_dns_record" "wildcard" {
   zone_id = var.cloudflare_zone_id
   name    = "*"
   ttl     = 1
-  content = "192.168.1.50" # LAN access
+  content = "10.0.0.50" # LAN access
   type    = "A"
   proxied = false
   comment = "Home server LAN wildcard dns"

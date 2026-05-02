@@ -19,7 +19,7 @@
   networking = {
     networkmanager.enable = true;
     nameservers = ["8.8.8.8"];
-    defaultGateway = "192.168.1.1";
+    defaultGateway = "10.0.0.1";
 
     firewall = {
       enable = true;
@@ -40,7 +40,10 @@
   };
 
   # TODO: create a dedicated deploy user
-  nix.settings.trusted-users = ["root" "cooper"];
+  nix.settings.trusted-users = [
+    "root"
+    "cooper"
+  ];
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false; # TODO: remove this, just in place to get initial configs applied

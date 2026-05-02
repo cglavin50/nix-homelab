@@ -8,14 +8,14 @@
     hostName = "bravo";
     interfaces.eno2.ipv4.addresses = [
       {
-        address = "192.168.1.60";
+        address = "10.0.0.60";
         prefixLength = 24;
       }
     ];
   };
 
   deployment = {
-    targetHost = "192.168.1.60";
+    targetHost = "10.0.0.60";
     targetUser = "cooper";
   };
 
@@ -23,6 +23,6 @@
     enable = true;
     role = "server";
     tokenFile = config.sops.secrets.k3s-token.path;
-    serverAddr = "https://192.168.1.50:6443";
+    serverAddr = "https://10.0.0.50:6443";
   };
 }

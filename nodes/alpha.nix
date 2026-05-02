@@ -8,7 +8,7 @@
     hostName = "alpha";
     interfaces.eno2.ipv4.addresses = [
       {
-        address = "192.168.1.50";
+        address = "10.0.0.50";
         prefixLength = 24;
       }
     ];
@@ -18,12 +18,12 @@
   services.tailscale = {
     useRoutingFeatures = "server";
     extraUpFlags = [
-      "--advertise-routes=192.168.1.0/24" # make sure to approve in the UI
+      "--advertise-routes=10.0.0.0/24" # make sure to approve in the UI
     ];
   };
 
   deployment = {
-    targetHost = "192.168.1.50";
+    targetHost = "10.0.0.50";
     targetUser = "cooper";
   };
 

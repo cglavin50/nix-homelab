@@ -13,3 +13,6 @@ k3s.yaml
 /terraform/.terraform
 *.tfstate
 *.tfstate.backup
+
+
+./**/*log*
