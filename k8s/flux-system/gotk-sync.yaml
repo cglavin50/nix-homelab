@@ -20,12 +20,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./k8s # since we are single-cluster, can get away with single path watch
+  path: ./k8s
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  decryption: # add sops decryption
-    provider: sops
-    secretRef:
-      name: sops-age
