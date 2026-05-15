@@ -67,7 +67,7 @@
 
       defaults = {...}: {
         imports = [
-          ./nodes/configuration.nix
+          ./nix/configuration.nix
           sops-nix.nixosModules.sops # give all attributes sops access
         ];
 
@@ -83,9 +83,9 @@
         };
       };
 
-      alpha = import ./nodes/alpha.nix;
-      bravo = import ./nodes/bravo.nix;
-      charlie = import ./nodes/charlie.nix;
+      alpha = import ./nix/alpha.nix;
+      bravo = import ./nix/bravo.nix;
+      charlie = import ./nix/charlie.nix;
     };
   };
 }
