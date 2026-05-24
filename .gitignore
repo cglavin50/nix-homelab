@@ -11,6 +11,8 @@ k3s.yaml
 *.tfvars
 /terraform/tfvars
 /terraform/.terraform
+/tofu/*tfvars
+/tofu/.terraform
 *.tfstate
 *.tfstate.backup
 

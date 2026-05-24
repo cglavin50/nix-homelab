@@ -66,3 +66,6 @@ The Cloudflare Provider requires an API Token with following permissions:
     - DNS: `Edit`
 
 The terraform code also creates a Kubernetes secret for the tunnel secret, which allows us to connect and manage the tunnel within our cluster.
+
+**Required Variables**:
+- `cloudflare_zone_id` - which can be found under Domains --> Overview --> Copy Zone ID

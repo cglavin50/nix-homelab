@@ -13,7 +13,8 @@ terraform {
       version = "~> 3.0"
     }
   }
-  required_version = ">1.14"
+  # required_version = "1.12.0" # TODO: upgrade once nixpkg updates
+  required_version = "1.11.1"
 }
 
 provider "cloudflare" {
@@ -29,7 +30,7 @@ resource "cloudflare_dns_record" "root" {
   zone_id = var.cloudflare_zone_id
   name    = "@"
   ttl     = 1
-  content = "10.0.0.50" # LAN access
+  content = var.private_ip
   type    = "A"
   proxied = false
   comment = "Home server LAN for non-tunneled services"
@@ -39,7 +40,7 @@ resource "cloudflare_dns_record" "wildcard" {
   zone_id = var.cloudflare_zone_id
   name    = "*"
   ttl     = 1
-  content = "10.0.0.50" # LAN access
+  content = var.private_ip
   type    = "A"
   proxied = false
   comment = "Home server LAN wildcard dns"

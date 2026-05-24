@@ -28,7 +28,9 @@
         pkgs.age
         pkgs.ssh-to-age
 
-        pkgs.terraform
+        # pkgs.terraform
+        pkgs.opentofu
+        pkgs.tofu-ls
 
         # k8s
         pkgs.kubectl
