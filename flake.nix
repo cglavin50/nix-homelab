@@ -49,6 +49,7 @@
       ];
 
       shellHook = ''
+        export KUBECONFIG=kubeconfig.yaml
         echo "K3s cluster development environment loaded!"
       '';
     };
