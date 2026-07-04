@@ -16,16 +16,16 @@ Make sure to follow official [flux docs](https://fluxcd.io/flux/migration/flux-v
 - [x] Commit + push branch
 - [x] `flux bootstrap github … --path=k8s` against the branch
 - [x] Create `sops-age` secret in `flux-system`
-- [ ] `flux check` + controllers Ready
+- [x] `flux check` + controllers Ready
 
 ### Phase 1 — cert-manager (controller)
-- [ ] Write `infrastructure/controllers/cert-manager.yaml`
-- [ ] Reconcile `infra-controllers`
-- [ ] Verify: 3 pods Ready + `cert-manager.io` CRDs present
+- [x] Write `infrastructure/controllers/cert-manager.yaml`
+- [x] Reconcile `infra-controllers`
+- [x] Verify: 3 pods Ready + `cert-manager.io` CRDs present
 
 ### Phase 2 — cert-manager configs (issuer + cert)
-- [ ] Write `infrastructure/configs/cert-manager.yaml` + `cloudflare-token.enc.yaml`
-- [ ] Reconcile `infra-configs`
+- [x] Write `infrastructure/configs/cert-manager.yaml` + `cloudflare-token.enc.yaml`
+- [x] Reconcile `infra-configs`
 - [ ] Verify: ClusterIssuer Ready; `wildcard-cert` Ready; `wildcard-tls` secret exists
 
 ### Phase 3 — Traefik TLSStore

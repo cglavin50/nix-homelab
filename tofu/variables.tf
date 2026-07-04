@@ -33,5 +33,5 @@ variable "minecraft_service_url" {
 
 variable "kubeconfig_path" {
   type = string
-  default = "../k3s.yaml"
+  default = "../kubeconfig.yaml"
 }
