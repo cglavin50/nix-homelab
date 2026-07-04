@@ -15,7 +15,7 @@ Make sure to follow official [flux docs](https://fluxcd.io/flux/migration/flux-v
 - [x] Write new tree (manifests + `cluster.yaml` + root `kustomization.yaml`); remove old scattered files
 - [x] Commit + push branch
 - [x] `flux bootstrap github … --path=k8s` against the branch
-- [ ] Create `sops-age` secret in `flux-system`
+- [x] Create `sops-age` secret in `flux-system`
 - [ ] `flux check` + controllers Ready
 
 ### Phase 1 — cert-manager (controller)

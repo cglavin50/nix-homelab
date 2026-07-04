@@ -13,6 +13,10 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
+  decryption: # add sops decryption
+    provider: sops
+    secretRef:
+      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -35,6 +39,10 @@ spec:
       kind: HelmRelease
       name: cert-manager
       namespace: cert-manager
+  decryption: # add sops decryption
+    provider: sops
+    secretRef:
+      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -52,3 +60,8 @@ spec:
     namespace: flux-system
   dependsOn:
     - name: infra-configs
+  decryption: # add sops decryption
+    provider: sops
+    secretRef:
+      name: sops-age
+
