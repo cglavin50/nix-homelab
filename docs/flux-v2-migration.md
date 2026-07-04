@@ -11,10 +11,10 @@ Make sure to follow official [flux docs](https://fluxcd.io/flux/migration/flux-v
 ## Progress checklist
 
 ### Phase 0 — Branch + Bootstrap
-- [ ] `git checkout -b flux-v2-migration`
-- [ ] Write new tree (manifests + `cluster.yaml` + root `kustomization.yaml`); remove old scattered files
-- [ ] Commit + push branch
-- [ ] `flux bootstrap github … --path=k8s` against the branch
+- [x] `git checkout -b flux-v2-migration`
+- [x] Write new tree (manifests + `cluster.yaml` + root `kustomization.yaml`); remove old scattered files
+- [x] Commit + push branch
+- [x] `flux bootstrap github … --path=k8s` against the branch
 - [ ] Create `sops-age` secret in `flux-system`
 - [ ] `flux check` + controllers Ready
 
