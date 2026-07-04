@@ -1,0 +1,94 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pihole
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: mojo2600
+  namespace: pihole
+spec:
+  interval: 24h
+  url: https://mojo2600.github.io/pihole-kubernetes/
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: pihole
+  namespace: pihole
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: pihole
+      version: "2.*"
+      sourceRef:
+        kind: HelmRepository
+        name: mojo2600
+        namespace: pihole
+      interval: 12h
+  values:
+    replicaCount: 1
+    serviceWeb:
+      type: ClusterIP
+      port:
+        http: 80
+    ingress:
+      enabled: false
+    adminPasswordSecret: pihole-secret
+    customDnsEntries:
+      - "10.0.0.50 vault.cglavin50.com"
+      - "10.0.0.50 cglavin50.com"
+    podSecurityPolicy:
+      enabled: false
+    strategy:
+      type: Recreate
+    persistence:
+      enabled: true
+      size: 10Gi
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pihole
+  namespace: pihole
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`pihole.cglavin50.com`)
+      kind: Rule
+      services:
+        - name: pihole-web
+          port: 80
+  tls:
+    store:
+      name: default
+      namespace: kube-system
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-dns-external
+  namespace: pihole
+  labels:
+    app.kubernetes.io/name: pihole
+    app.kubernetes.io/part-of: pihole
+spec:
+  type: LoadBalancer
+  externalIPs:
+    - 10.0.0.50
+  ports:
+    - name: dns-tcp
+      port: 53
+      protocol: TCP
+      targetPort: 53
+    - name: dns-udp
+      port: 53
+      protocol: UDP
+      targetPort: 53
+  selector:
+    app: pihole
+    release: pihole

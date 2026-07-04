@@ -1,3 +1,4 @@
+---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -17,3 +18,19 @@ spec:
       selector:
         dnsZones:
           - "cglavin50.com"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-cert
+  namespace: kube-system
+spec:
+  secretName: wildcard-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - "cglavin50.com"
+    - "*.cglavin50.com"
+  duration: 2160h
+  renewBefore: 720h

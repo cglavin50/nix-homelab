@@ -1,3 +1,25 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloudflared
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudflared-metrics
+  namespace: cloudflared
+  labels:
+    app: cloudflared
+spec:
+  type: ClusterIP
+  selector:
+    app: cloudflared
+  ports:
+    - name: metrics
+      port: 8000
+      targetPort: 8000
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -30,14 +52,6 @@ spec:
             secretKeyRef:
               name: cloudflared-token
               key: token
-        # liveness probe needs proper configuring
-        # livenessProbe:
-        #   httpGet:
-        #     path: /ready
-        #     port: 2000
-        #   failureThreshold: 1
-        #   initialDelaySeconds: 10
-        #   periodSeconds: 10
         resources:
           requests:
             cpu: 100m
