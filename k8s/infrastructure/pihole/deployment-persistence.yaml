@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+  namespace: pihole
+spec:
+  template:
+    spec:
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: pihole-data
