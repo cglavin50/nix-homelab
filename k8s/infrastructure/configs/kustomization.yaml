@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cert-manager.yaml
+  - cloudflare-token.enc.yaml
+  - traefik-tlsstore.yaml
+  - cloudflared.yaml
+  - pihole.yaml
+  - pihole-password.enc.yaml
+sops:
+  version: 3.8.1
+  provider: age
+  age:
+    recipients:
+      - age1q4amzhu35vv98c8usgamjjhwhn5q82sulmzdmcdhkh2zq0a3vaesxvv9y4
+      - age1arllsk3da07lj6ers0cdvtaz4qqlg7lq7h8k7nmp2ejtwm29pgcs0lun67
+      - age1jksv6jmy6flf0cv3grctntgs7kp53c7d72690qsxrxvawxz7nu2sttfklz
+      - age19wdth3zh940spdq34gweu6feugejlzxeczlgjvf92nygg6tkf3lq2aprdu
