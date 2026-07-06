@@ -37,7 +37,7 @@ spec:
         http: 80
     ingress:
       enabled: false
-    adminPasswordSecret: pihole-secret
+    adminPasswordSecret: pihole-password
     customDnsEntries:
       - "10.0.0.50 vault.cglavin50.com"
       - "10.0.0.50 cglavin50.com"
