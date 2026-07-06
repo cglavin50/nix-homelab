@@ -61,7 +61,7 @@ spec:
         - name: DOMAIN
           value: "https://vault.cglavin50.com"
         - name: SIGNUPS_ALLOWED
-          value: "false"
+          value: "true"
         - name: WEBSOCKET_ENABLED
           value: "true"
         - name: ADMIN_TOKEN
