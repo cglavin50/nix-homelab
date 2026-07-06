@@ -91,7 +91,6 @@ spec:
         projects:
           - fabric-api
           - lithium
-          - krypton
           - ferrite-core
           - carpet
           - spark
