@@ -43,6 +43,7 @@ spec:
     customDnsEntries:
       - "10.0.0.50 vault.cglavin50.com"
       - "10.0.0.50 cglavin50.com"
+      - "10.0.0.50 grafana.cglavin50.com"
     podSecurityPolicy:
       enabled: false
     strategy:
