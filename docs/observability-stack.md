@@ -61,42 +61,42 @@ Plus a `monitoring` Flux `Kustomization` block in `k8s/cluster.yaml`
 
 ### Scaffolding
 
-- [ ] Create `k8s/monitoring/` directory + `kustomization.yaml`
-- [ ] Add `monitoring` Flux `Kustomization` to `k8s/cluster.yaml`
+- [x] Create `k8s/monitoring/` directory + `kustomization.yaml`
+- [x] Add `monitoring` Flux `Kustomization` to `k8s/cluster.yaml`
       (dependsOn `infra-controllers`, SOPS decryption, prune)
-- [ ] Declare `monitoring` namespace
+- [x] Declare `monitoring` namespace
 
 ### Metrics + Grafana
 
-- [ ] Add `prometheus-community` `HelmRepository`
-- [ ] Add `kube-prometheus-stack` `HelmRelease` (pin chart version)
-- [ ] Disable k3s-incompatible scrape jobs (kubeControllerManager,
+- [x] Add `prometheus-community` `HelmRepository`
+- [x] Add `kube-prometheus-stack` `HelmRelease` (pin chart version)
+- [x] Disable k3s-incompatible scrape jobs (kubeControllerManager,
       kubeScheduler, kubeProxy, kubeEtcd)
-- [ ] Prometheus: retention ~15d, PVC ~20 Gi, memory req/limit ~512Mi/1Gi
-- [ ] Create `grafana-admin-secret.enc.yaml` (SOPS) and reference via
+- [x] Prometheus: retention ~15d, PVC ~20 Gi, memory req/limit ~512Mi/1Gi
+- [x] Create `grafana-admin-secret.enc.yaml` (SOPS) and reference via
       `grafana.admin.existingSecret` — verify name/keys match
-- [ ] Grafana: PVC ~2 Gi, datasource **sidecar enabled** (ready for Loki later)
-- [ ] Grafana Traefik `IngressRoute` at `grafana.cglavin50.com`
+- [x] Grafana: PVC ~2 Gi, datasource **sidecar enabled** (ready for Loki later)
+- [x] Grafana Traefik `IngressRoute` at `grafana.cglavin50.com`
       (websecure, TLS default store in kube-system)
-- [ ] Add Pi-hole `customDnsEntry` for `grafana.cglavin50.com → 10.0.0.50`
+- [x] Add Pi-hole `customDnsEntry` for `grafana.cglavin50.com → 10.0.0.50`
 
 ### Verify (Milestone 1 done when all green)
 
-- [ ] `flux reconcile kustomization monitoring --with-source`
-- [ ] `kube-prometheus-stack` HelmRelease `Ready`
-- [ ] node-exporter running on all 3 nodes
-- [ ] Grafana reachable at `grafana.cglavin50.com`, login works
-- [ ] Prometheus targets green (node metrics flowing, no k3s "down" noise)
+- [x] `flux reconcile kustomization monitoring --with-source`
+- [x] `kube-prometheus-stack` HelmRelease `Ready`
+- [x] node-exporter running on all 3 nodes
+- [x] Grafana reachable at `grafana.cglavin50.com`, login works
+- [x] Prometheus targets green (node metrics flowing, no k3s "down" noise)
 
 ---
 
 ## Milestone 2 — Logs (Loki + Alloy)  *(separate step, after M1 is stable)*
 
-- [ ] Add `grafana` `HelmRepository`
-- [ ] Add Loki `HelmRelease` — single-binary mode, filesystem storage,
+- [x] Add `grafana` `HelmRepository`
+- [x] Add Loki `HelmRelease` — single-binary mode, filesystem storage,
       PVC ~10 Gi, retention ~7d
-- [ ] Add Grafana Alloy `HelmRelease` (DaemonSet) — collect pod logs, push to Loki
-- [ ] Add Loki as a Grafana datasource via sidecar-labeled ConfigMap
+- [x] Add Grafana Alloy `HelmRelease` (DaemonSet) — collect pod logs, push to Loki
+- [x] Add Loki as a Grafana datasource via sidecar-labeled ConfigMap
 - [ ] Verify: logs visible in Grafana Explore
 
 ---
