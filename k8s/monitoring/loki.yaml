@@ -25,44 +25,81 @@ spec:
         namespace: monitoring
       interval: 12h
   values:
+    # single binary mode: https://github.com/grafana/loki/blob/main/production/helm/loki/single-binary-values.yaml
     loki:
-      auth_enabled: false
-      storage:
-        type: filesystem
-        filesystem:
-          chunks_directory: /loki/chunks
-          rules_directory: /loki/rules
-        bucketNames:
-          chunks: chunks
-          ruler: ruler
-      schema_config:
+      commonConfig:
+        replication_factor: 1
+      schemaConfig:
         configs:
-          # https://grafana.com/docs/loki/latest/operations/storage/schema/
-          - from: 2024-04-01 
+          - from: "2024-04-01"
             store: tsdb
+            object_store: filesystem
             schema: v13
             index:
-              prefix: index_
+              prefix: loki_index_
               period: 24h
-            object_store: filesystem
+      ingester:
+        chunk_encoding: snappy
+      tracing:
+        enabled: true
+      querier:
+        max_concurrent: 2
 
+    #gateway:
+    #  ingress:
+    #    enabled: true
+    #    hosts:
+    #      - host: FIXME
+    #        paths:
+    #          - path: /
+    #            pathType: Prefix
+
+    deploymentMode: SingleBinary
     singleBinary:
       replicas: 1
-      persistence:
-        enabled: true
-        size: 10Gi
-        storageClassName: local-path
       resources:
-        requests:
-          cpu: 50m
-          memory: 64Mi
         limits:
-          cpu: 200m
-          memory: 256Mi
+          cpu: 3
+          memory: 4Gi
+        requests:
+          cpu: 2
+          memory: 2Gi
+      extraEnv:
+        # Keep a little bit lower than memory limits
+        - name: GOMEMLIMIT
+          value: 3750MiB
 
+    chunksCache:
+      # default is 500MB, with limited memory keep this smaller
+      writebackSizeLimit: 10MB
+
+    # Enable minio for storage
+    minio:
+      enabled: true
+
+    # Zero out replica counts of other deployment modes
     backend:
       replicas: 0
     read:
       replicas: 0
     write:
+      replicas: 0
+
+    ingester:
+      replicas: 0
+    querier:
+      replicas: 0
+    queryFrontend:
+      replicas: 0
+    queryScheduler:
+      replicas: 0
+    distributor:
+      replicas: 0
+    compactor:
+      replicas: 0
+    indexGateway:
+      replicas: 0
+    bloomCompactor:
+      replicas: 0
+    bloomGateway:
       replicas: 0
