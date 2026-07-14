@@ -16,11 +16,26 @@ spec:
         namespace: monitoring
       interval: 12h
   values:
+    # Image configuration
+    image:
+      registry: docker.io
+      repository: grafana/alloy
+      pullPolicy: IfNotPresent
+
+    # Alloy core configuration
     alloy:
       clustering:
         enabled: false
-      mobileMode:
-        enabled: false
+      stabilityLevel: "generally-available"
+      storagePath: /tmp/alloy
+      enableHttpServerPort: true
+      listenAddr: 0.0.0.0
+      listenPort: 12345
+      listenScheme: HTTP
+      initialDelaySeconds: 10
+      timeoutSeconds: 1
+      enableReporting: true
+
       config: |
         discovery.kubernetes "pods" {
           role = "pod"
@@ -51,26 +66,47 @@ spec:
           endpoint {
             url = "http://loki:3100/loki/api/v1/push"
           }
+          tenant_id = "self-monitoring"
         }
 
-    controller:
-      type: daemonset
+      resources:
+        requests:
+          cpu: 50m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 128Mi
 
-    resources:
-      requests:
-        cpu: 50m
-        memory: 64Mi
-      limits:
-        cpu: 100m
-        memory: 128Mi
-
-    serviceAccount:
-      create: true
-      name: alloy
-
+    # RBAC configuration
     rbac:
       create: true
 
+    # Service account configuration
+    serviceAccount:
+      create: true
+      automountServiceAccountToken: true
+
+    # Config reloader for automatic config updates
+    configReloader:
+      enabled: true
+      resources:
+        requests:
+          cpu: 10m
+          memory: 50Mi
+
+    # Controller configuration
+    controller:
+      type: daemonset
+      minReadySeconds: 10
+      revisionHistoryLimit: 10
+      dnsPolicy: ClusterFirst
+
+    # Service configuration
+    service:
+      enabled: true
+      type: ClusterIP
+
+    # Tolerations for control plane nodes
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
