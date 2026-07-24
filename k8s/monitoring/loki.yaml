@@ -33,7 +33,7 @@ spec:
         configs:
           - from: "2024-04-01"
             store: tsdb
-            object_store: filesystem
+            object_store: s3 # storing locally on MiniO
             schema: v13
             index:
               prefix: loki_index_
