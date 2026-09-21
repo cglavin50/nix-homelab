@@ -27,6 +27,7 @@ spec:
   values:
     # single binary mode: https://github.com/grafana/loki/blob/main/production/helm/loki/single-binary-values.yaml
     loki:
+      auth_enabled: false
       commonConfig:
         replication_factor: 1
       schemaConfig:
