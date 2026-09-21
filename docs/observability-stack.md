@@ -102,7 +102,7 @@ Plus a `monitoring` Flux `Kustomization` block in `k8s/cluster.yaml`
       PVC ~10 Gi, retention ~7d
 - [x] Add Grafana Alloy `HelmRelease` (DaemonSet) — collect pod logs, push to Loki
 - [x] Add Loki as a Grafana datasource via sidecar-labeled ConfigMap
-- [ ] Verify: logs visible in Grafana Explore
+- [x] Verify: logs visible in Grafana Explore
 
 ---
 
