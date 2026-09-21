@@ -18,6 +18,11 @@ Alloy for logs.
 - **Log collector:** Grafana Alloy (Promtail is deprecated/EOL as of 2025).
 - **Loki mode:** single-binary / monolithic with filesystem storage (not the
   scalable object-store mode). Right-sized for a homelab.
+- **Loki auth:** `auth_enabled: false` (multi-tenant `X-Scope-OrgID` auth
+  disabled). Single-tenant homelab, no external exposure of the Loki API
+  (only reachable via the Grafana datasource inside the cluster) — see
+  [Auth model changelog](#auth-model-changelog) for the incident that
+  surfaced this and the tradeoff.
 - **Metrics:** `kube-prometheus-stack` (bundles Prometheus, Alertmanager,
   Grafana, node-exporter, kube-state-metrics).
 
@@ -107,3 +112,38 @@ Plus a `monitoring` Flux `Kustomization` block in `k8s/cluster.yaml`
 - [ ] `ServiceMonitor`/`PodMonitor` for Traefik, Pi-hole, Minecraft, Vaultwarden (as desired)
 - [ ] Provision per-app Grafana dashboards (labeled ConfigMaps)
 - [ ] Optional: Alertmanager route to Discord (existing discord-bot / webhook)
+
+---
+
+## Auth model changelog
+
+Audit trail for changes to auth/authz on any component in this stack. Append
+an entry — never edit history — whenever an auth setting changes (enabling,
+disabling, or reconfiguring authentication/authorization on Grafana,
+Prometheus, Loki, or Alertmanager).
+
+### 2026-09-20 — Loki `auth_enabled` set to `false`
+
+- **Component:** Loki (`k8s/monitoring/loki.yaml`)
+- **Change:** `loki.auth_enabled: true` (chart default, implicit) →
+  `loki.auth_enabled: false` (explicit)
+- **Commit:** `f40c6e7`
+- **Trigger:** Grafana Explore returned `no org id` on every Loki query.
+  Loki chart 6.55.0 defaults `auth_enabled: true`, which requires an
+  `X-Scope-OrgID` header on every request for tenant isolation; the
+  Grafana Loki datasource (sidecar-provisioned, `k8s/monitoring/loki.yaml`
+  `loki-datasource` ConfigMap) does not send one.
+- **Alternative considered:** keep `auth_enabled: true` and inject a static
+  `X-Scope-OrgID` header via the Grafana datasource `jsonData`
+  (`httpHeaderName1`/`httpHeaderValue1`). Rejected — adds a fake-tenant
+  header for no isolation benefit in a single-tenant deployment; more
+  moving parts to keep in sync for zero gain.
+- **Risk accepted:** Loki API has no per-request authentication once
+  `auth_enabled: false`. Mitigated by network exposure being unchanged:
+  Loki is only reachable in-cluster (`http://loki:3100`, ClusterIP, no
+  Ingress/IngressRoute); Grafana itself remains the only externally
+  reachable surface, gated by the existing `grafana-admin-secret` login.
+- **Reviewer follow-up:** if Loki is ever exposed outside the cluster
+  (e.g. a second Grafana instance, direct LogCLI access from another
+  host), re-enable `auth_enabled` and wire a real per-tenant header
+  instead of reverting this decision silently.
