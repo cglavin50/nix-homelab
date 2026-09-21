@@ -35,7 +35,8 @@
         # k8s
         pkgs.kubectl
         pkgs.fluxcd
-        pkgs.helm
+        pkgs.kubernetes-helm
+        pkgs.k9s
 
         # formating/linting
         pkgs.pre-commit
