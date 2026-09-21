@@ -110,3 +110,8 @@ spec:
     # via Alloy, and it clutters Explore. Off for this homelab.
     lokiCanary:
       enabled: false
+
+    # Chart's built-in helm-test hook asserts lokiCanary.enabled; we don't
+    # run `helm test` via Flux, so turn the hook's rendering off too.
+    test:
+      enabled: false
