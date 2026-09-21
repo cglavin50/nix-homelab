@@ -104,3 +104,9 @@ spec:
       replicas: 0
     bloomGateway:
       replicas: 0
+
+    # Canary writes synthetic "ppppp..." test lines directly to Loki to
+    # verify the pipeline; that's noise once real app logs are flowing
+    # via Alloy, and it clutters Explore. Off for this homelab.
+    lokiCanary:
+      enabled: false
