@@ -6,6 +6,7 @@ _: {
       2379 # etcd clients
       2380 # etcd peers
       10250 # metrics-server
+      9100 # node-exporter (Prometheus cross-node scrape)
     ];
     allowedUDPPorts = [
       8472 # k3s, flannel
