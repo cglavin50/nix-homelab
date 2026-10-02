@@ -17,6 +17,45 @@ spec:
       storage: 5Gi
 ---
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vaultwarden-tailscale-state
+  namespace: services
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vaultwarden-tailscale-serve-config
+  namespace: services
+data:
+  serve.json: |
+    {
+      "TCP": {
+        "443": {
+          "HTTPS": true
+        }
+      },
+      "Web": {
+        "${TS_CERT_DOMAIN}:443": {
+          "Handlers": {
+            "/": {
+              "Proxy": "http://127.0.0.1:80"
+            }
+          }
+        }
+      },
+      "AllowFunnel": {
+        "${TS_CERT_DOMAIN}:443": false
+      }
+    }
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: vaultwarden
@@ -92,10 +131,42 @@ spec:
             port: http
           initialDelaySeconds: 10
           periodSeconds: 10
+      - name: tailscale
+        image: tailscale/tailscale:v1.102.2
+        env:
+        - name: TS_AUTHKEY
+          valueFrom:
+            secretKeyRef:
+              name: vaultwarden-tailscale-secrets
+              key: TS_AUTHKEY
+        - name: TS_HOSTNAME
+          value: "vaultwarden"
+        - name: TS_STATE_DIR
+          value: "/var/lib/tailscale"
+        - name: TS_SERVE_CONFIG
+          value: "/config/serve.json"
+        volumeMounts:
+        - name: tailscale-state
+          mountPath: /var/lib/tailscale
+        - name: ts-serve-config
+          mountPath: /config
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "10m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
       volumes:
       - name: data
         persistentVolumeClaim:
           claimName: vaultwarden-data
+      - name: tailscale-state
+        persistentVolumeClaim:
+          claimName: vaultwarden-tailscale-state
+      - name: ts-serve-config
+        configMap:
+          name: vaultwarden-tailscale-serve-config
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute

@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - vaultwarden.yaml
   - vaultwarden-secret.enc.yaml
+  - vaultwarden-tailscale-secret.enc.yaml
   - discord-bot.yaml
   - discord-bot-secret.enc.yaml
   - minecraft.yaml
