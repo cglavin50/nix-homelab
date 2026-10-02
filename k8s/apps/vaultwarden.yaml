@@ -143,8 +143,12 @@ spec:
           value: "vaultwarden"
         - name: TS_STATE_DIR
           value: "/var/lib/tailscale"
+        - name: TS_KUBE_SECRET
+          value: ""
         - name: TS_SERVE_CONFIG
           value: "/config/serve.json"
+        - name: TS_AUTH_ONCE
+          value: "true"
         volumeMounts:
         - name: tailscale-state
           mountPath: /var/lib/tailscale
