@@ -85,17 +85,11 @@ spec:
         -XX:+PerfDisableSharedMem
         -XX:MaxTenuringThreshold=15
         -XX:+UseStringDeduplication
-      type: "FABRIC"
-      fabricLauncherVersion: "LATEST"
+      type: "PAPER"
       modrinth:
         projects:
-          - fabric-api
-          - lithium
-          - ferrite-core
-          - carpet
           - spark
           - luckperms
-          - fabric-custom-names
       rcon:
         enabled: true
         port: 25575
