@@ -98,7 +98,7 @@ spec:
           name: http
         env:
         - name: DOMAIN
-          value: "https://vault.cglavin50.com"
+          value: "https://vaultwarden.tail9a67cd.ts.net"
         - name: SIGNUPS_ALLOWED
           value: "true"
         - name: WEBSOCKET_ENABLED
