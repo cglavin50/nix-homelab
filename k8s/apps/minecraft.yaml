@@ -58,7 +58,7 @@ spec:
       version: "LATEST"
       difficulty: normal
       whitelist: ""
-      ops: ""
+      ops: "LongMan3"
       motd: "Coops Minecraft Server :)"
       maxPlayers: 20
       viewDistance: 16
