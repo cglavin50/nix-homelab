@@ -7,3 +7,4 @@ resources:
   - alloy.yaml
   - loki-datasource.yaml
   - minecraft-alerts.yaml
+  - alertmanager-discord-secret.yaml
