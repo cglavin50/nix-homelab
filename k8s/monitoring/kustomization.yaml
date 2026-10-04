@@ -6,3 +6,4 @@ resources:
   - loki.yaml
   - alloy.yaml
   - loki-datasource.yaml
+  - minecraft-alerts.yaml

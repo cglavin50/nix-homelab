@@ -1,0 +1,51 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: minecraft-alerts
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: minecraft.rules
+      rules:
+        - alert: MinecraftPodNotReady
+          expr: |
+            kube_pod_status_ready{namespace="gaming", pod=~"minecraft-.*", condition="true"} == 0
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Minecraft pod not ready"
+            description: "{{ $labels.pod }} has not reported Ready for 3m. Players likely cannot connect."
+
+        - alert: MinecraftPodRestarting
+          expr: |
+            increase(kube_pod_container_status_restarts_total{namespace="gaming", container="minecraft"}[10m]) > 0
+          for: 0m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Minecraft container restarted"
+            description: "{{ $labels.pod }} container {{ $labels.container }} restarted in the last 10m."
+
+        - alert: MinecraftOOMKilled
+          expr: |
+            kube_pod_container_status_last_terminated_reason{namespace="gaming", container="minecraft", reason="OOMKilled"} == 1
+          for: 0m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Minecraft container OOMKilled"
+            description: "{{ $labels.pod }} was OOMKilled. JVM heap (10G) + off-heap exceeded the 12Gi container memory limit."
+
+        - alert: MinecraftMemoryNearLimit
+          expr: |
+            container_memory_working_set_bytes{namespace="gaming", container="minecraft"}
+              / container_spec_memory_limit_bytes{namespace="gaming", container="minecraft"} > 0.9
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Minecraft memory near container limit"
+            description: "{{ $labels.pod }} working set is above 90% of its 12Gi memory limit for 5m. Risk of imminent OOMKill."

@@ -96,7 +96,10 @@ spec:
         secretKey: rcon-password
     resources:
       requests:
+        cpu: "1"
         memory: 10Gi
+      limits:
+        memory: 12Gi
     persistence:
       dataDir:
         enabled: true
