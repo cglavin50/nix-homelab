@@ -95,6 +95,7 @@ spec:
           - ferrite-core
           - spark
           - luckperms
+        allowedVersionType: alpha
       rcon:
         enabled: true
         port: 25575
