@@ -94,6 +94,7 @@ spec:
           - chunky
           - ferrite-core
           - spark
+          - rpl
         allowedVersionType: alpha
       rcon:
         enabled: true
