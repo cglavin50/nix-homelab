@@ -94,7 +94,7 @@ spec:
           - chunky
           - ferrite-core
           - spark
-          - luckperms
+          - luckperms:v5.4.150-neoforge
         allowedVersionType: alpha
       rcon:
         enabled: true
