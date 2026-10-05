@@ -88,13 +88,8 @@ spec:
       type: "NEOFORGE"
       modrinth:
         projects:
-          - create
-          - lithium
-          - c2me-neoforge
           - chunky
-          - ferrite-core
           - spark
-          - rpl
         allowedVersionType: alpha
       rcon:
         enabled: true
@@ -112,7 +107,113 @@ spec:
         enabled: true
         size: 10Gi
     extraEnv:
-      MODS: https://cdn.modrinth.com/data/Vebnzrzj/versions/dKAPoPGd/LuckPerms-NeoForge-5.4.150.jar
+      MODS: |
+        https://cdn.modrinth.com/data/Vebnzrzj/versions/dKAPoPGd/LuckPerms-NeoForge-5.4.150.jar
+        https://cdn.modrinth.com/data/DdAlVT8M/versions/pKFEfjEB/aeroencasedpipe-1.0.7.jar
+        https://cdn.modrinth.com/data/b8kG1VGq/versions/XDz1C9KI/aileron-1.21.1-neoforge-1.1.4.jar
+        https://cdn.modrinth.com/data/KUInlTFo/versions/mhmFlajn/alloyed-3.0.9%2B1.21.1-neoforge.jar
+        https://cdn.modrinth.com/data/6iTJugQR/versions/8xf6Wpxs/amendments-1.21-2.0.15-neoforge.jar
+        https://cdn.modrinth.com/data/ulloLmqG/versions/Q29JlZfU/another_furniture-neoforge-4.0.2.jar
+        https://cdn.modrinth.com/data/EsAfCjCV/versions/uAKA6Laj/appleskin-neoforge-mc1.21-3.0.9.jar
+        https://cdn.modrinth.com/data/lhGA9TYQ/versions/ZxYGwlk0/architectury-13.0.8-neoforge.jar
+        https://cdn.modrinth.com/data/bbGCtEvb/versions/SGpwIu7v/ArmorStatues-v21.1.0-1.21.1-NeoForge.jar
+        https://cdn.modrinth.com/data/1jvt7RTc/versions/2bqCbUXm/AxesAreWeapons-1.10.2-neoforge-1.21.jar
+        https://cdn.modrinth.com/data/5ypXYrfG/versions/uJwkM1Xh/ballastmod-0.1.0.jar
+        https://cdn.modrinth.com/data/MBAkmtvl/versions/3XiinKbh/balm-neoforge-1.21.1-21.0.58.jar
+        https://cdn.modrinth.com/data/gJ5afkVv/versions/w0mifib8/bellsandwhistles-0.4.7-1.21.1.jar
+        https://cdn.modrinth.com/data/T8bvmqVZ/versions/XKDQlGJW/bits_n_bobs-0.0.44.jar
+        https://cdn.modrinth.com/data/uy4Cnpcm/versions/1sdJl7J1/bookshelf-neoforge-1.21.1-21.1.81.jar
+        https://cdn.modrinth.com/data/ntRJD9NS/versions/fY5ANmQJ/brick_and_mortar-neoforge-1.21.1-1.1.0.jar
+        https://cdn.modrinth.com/data/COlSi5iR/versions/KmfiVd28/c2me-neoforge-mc1.21.1-0.3.0%2Balpha.0.93.jar
+        https://cdn.modrinth.com/data/joEfVgkn/versions/cgZi7nC7/carryon-neoforge-1.21.1-2.2.4.4.jar
+        https://cdn.modrinth.com/data/MpnDZ1Lx/versions/z7xbAdje/CarryOnAeroCompat-1.21.1-1.1.1.jar
+        https://cdn.modrinth.com/data/dv57xmf9/versions/i5PXO3P7/cerulean-neoforge-1.0.0-1.21.1.jar
+        https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar
+        https://cdn.modrinth.com/data/4w0EzGRW/versions/6xRYHfEK/Companion-1.21.1-NeoForge-6.2.1.jar
+        https://cdn.modrinth.com/data/SISoSFPP/versions/HJxTPhTM/ConfiguredDefaults-v21.1.3-1.21.1-NeoForge.jar
+        https://cdn.modrinth.com/data/5pzBXDS3/versions/k6pnsqqp/connectiblechains-neoforge-1.21.1-2.1.0.jar
+        https://cdn.modrinth.com/data/u58R1TMW/versions/1i8teo7m/connector-2.0.0-beta.14%2B1.21.1-full.jar
+        https://cdn.modrinth.com/data/FYpiwiBR/versions/dgLCqZyo/ConnectorExtras-1.12.1%2B1.21.1.jar
+        https://cdn.modrinth.com/data/rLLJ1OZM/versions/H2YXCYUY/coroutil-neoforge-1.21.0-1.3.8.jar
+        https://cdn.modrinth.com/data/exLPXAoq/versions/6SvDFvET/Create%20Components%20and%20Additions%202.3.jar
+        https://cdn.modrinth.com/data/j6Zt3N7W/versions/8RgwHaKI/create_factory-0.7a-1.21.1.jar
+        https://cdn.modrinth.com/data/cpqKG67r/versions/VSJhIkG2/create_pattern_schematics-2.0.10.jar
+        https://cdn.modrinth.com/data/LNytGWDc/versions/UjX6dr61/create-1.21.1-6.0.10.jar
+        https://cdn.modrinth.com/data/oWaK0Q19/versions/w7zlLnea/create-aeronautics-bundled-1.21.1-1.3.0.jar
+        https://cdn.modrinth.com/data/dWU6xUnj/versions/DkktDPvc/create-cardboarded-conveynience-1.21.1-neoforge-1.0.0.jar
+        https://cdn.modrinth.com/data/JWGBpFUP/versions/qUpvzZ83/create-enchantment-industry-2.4.2.jar
+        https://cdn.modrinth.com/data/WNRCHiE5/versions/g0PyoRas/create-extended-wrenches-1.21.1-2.0.2.jar
+        https://cdn.modrinth.com/data/gv5RRavC/versions/mimF2YUr/create-shufflefilter-2.1.0-neo.jar
+        https://cdn.modrinth.com/data/GWp4jCJj/versions/Xd4DDnph/createbigcannons-5.11.6%2Bmc.1.21.1.jar
+        https://cdn.modrinth.com/data/dzb1a5WV/versions/lSnZyFnZ/CreateDragonsPlus-1.11.2b.jar
+        https://cdn.modrinth.com/data/15fFZ3f4/versions/1BtGyIVR/createframed-1.21.1-1.7.3.jar
+        https://cdn.modrinth.com/data/udEtt0b2/versions/gKqw2akx/createprism-1.2.2.jar
+        https://cdn.modrinth.com/data/xQU6E1ee/versions/2KEQq349/distractingtrims-neoforge-1.21.1-21.1.1.jar
+        https://cdn.modrinth.com/data/qANg5Jrr/versions/uQddXQQr/e4mc-neoforge-6.1.2.jar
+        https://cdn.modrinth.com/data/OZBR5JT5/versions/fSQSKhdF/EasyAnvils-v21.1.0-1.21.1-NeoForge.jar
+        https://cdn.modrinth.com/data/NCKpPR0Z/versions/ml3dpcRE/ecologics-1.21.1-2.3.6.jar
+        https://cdn.modrinth.com/data/qbbO7Jns/versions/QXkODMCT/emi_loot-0.7.9%2B1.21%2Bneoforge.jar
+        https://cdn.modrinth.com/data/fRiHVvU7/versions/5sIPA1To/emi-1.1.24%2B1.21.1%2Bneoforge.jar
+        https://cdn.modrinth.com/data/yHN0njMr/versions/La8SvoPm/ends_delight-2.6%2Bneoforge.1.21.1.jar
+        https://cdn.modrinth.com/data/R2OftAxM/versions/GbNuOZ4S/FarmersDelight-1.21.1-1.3.2.jar
+        https://cdn.modrinth.com/data/z3TzcquW/versions/PQ155hbf/fastpaintings-1.21-1.3.0-neoforge.jar
+        https://cdn.modrinth.com/data/uXXizFIs/versions/x7kQWVju/ferritecore-7.0.3-neoforge.jar
+        https://cdn.modrinth.com/data/Aqlf1Shp/versions/7nHK7hMg/forgified-fabric-api-0.116.7%2B2.2.4%2B1.21.1.jar
+        https://cdn.modrinth.com/data/hYykXjDp/versions/MAPG6cXE/fzzy_config-0.7.6%2B1.21%2Bneoforge.jar
+        https://cdn.modrinth.com/data/zg2tT2Vu/versions/IDRMIIb4/gml-6.0.2.jar
+        https://cdn.modrinth.com/data/W6ROj0Hl/versions/OvIyyNh4/iChunUtil-1.21-NeoForge-1.0.3.jar
+        https://cdn.modrinth.com/data/ufdDoWPd/versions/Zr2eBMyy/Kiwi-1.21.1-NeoForge-15.8.4.jar
+        https://cdn.modrinth.com/data/J81TRJWm/versions/stJDU839/konkrete_neoforge_1.9.9_MC_1.21.jar
+        https://cdn.modrinth.com/data/ordsPcFz/versions/NrSebcsG/kotlinforforge-5.11.0-all.jar
+        https://cdn.modrinth.com/data/gvQqBUqZ/versions/RXHf27Wv/lithium-neoforge-0.15.3%2Bmc1.21.1.jar
+        https://cdn.modrinth.com/data/bN3xUWdo/versions/CohX6yP1/lodestone-1.21.1-1.8.2.jar
+        https://cdn.modrinth.com/data/EltpO5cN/versions/C2tLycH2/lootr-neoforge-1.21.1-1.11.37.120.jar
+        https://cdn.modrinth.com/data/4hwXMFif/versions/74IL0dDS/map_atlases-neoforge-1.21-6.6.0.jar
+        https://cdn.modrinth.com/data/qMxbM4BQ/versions/YUHbwbgQ/minersdelight-1.21.1-1.4.5.jar
+        https://cdn.modrinth.com/data/nmDcB62a/versions/iFmzYK6q/modernfix-neoforge-5.27.12%2Bmc1.21.1.jar
+        https://cdn.modrinth.com/data/twkfQtEc/versions/RrSYwKog/moonlight-neoforge-1.21.1-3.0.17.jar
+        https://cdn.modrinth.com/data/8jvcOd6S/versions/s0FVNDXY/more_sounds-1.21.x-0.3.0-beta.jar
+        https://cdn.modrinth.com/data/SNVQ2c0g/versions/qYqVf5jP/mru-1.0.19%2BLTS%2B1.21.1%2Bneoforge.jar
+        https://cdn.modrinth.com/data/O53VhQoZ/versions/qBUSJw5Z/MyNethersDelight-1.21.1-1.10.2.jar
+        https://cdn.modrinth.com/data/DzSY371i/versions/MUOGH4UT/neobeefix-1.21.1-2.0.1.jar
+        https://cdn.modrinth.com/data/nDFVOeq7/versions/PJ7q3Y9v/netherite_horse_armor-neoforge-1.21.1-2.0a.jar
+        https://cdn.modrinth.com/data/nPZr02ET/versions/O09BGtgh/netherportalfix-neoforge-1.21.1-21.1.1.jar
+        https://cdn.modrinth.com/data/bQh7xzFq/versions/8SBaRv1t/Not%20Enough%20Recipe%20Book-NEOFORGE-0.4.3%2B1.21.jar
+        https://cdn.modrinth.com/data/RH2KUdKJ/versions/yVCCi6TK/OctoLib-NEOFORGE-0.6.2%2B1.21.jar
+        https://cdn.modrinth.com/data/CQTUbhIo/versions/bnlB3gWi/potionstacks-1.0.0.jar
+        https://cdn.modrinth.com/data/aaRl8GiW/versions/EE1FHDyD/prickle-neoforge-1.21.1-21.1.11.jar
+        https://cdn.modrinth.com/data/QAGBst4M/versions/PRF4qcdp/PuzzlesLib-v21.1.51-1.21.1-NeoForge.jar
+        https://cdn.modrinth.com/data/qnQsVE2z/versions/hMLnxKZx/Quark-4.1-480.jar
+        https://cdn.modrinth.com/data/pSISfJ4O/versions/A5J7bhL4/quick-pack-neoforge-1.3.2%2B1.21.8.jar
+        https://cdn.modrinth.com/data/L3Jv0QZI/versions/HOPX5oro/railways-0.2.1%2Bneoforge-mc1.21.1.jar
+        https://cdn.modrinth.com/data/xVwaUG1g/versions/PVuzxvsM/reliable_advancements-neoforge-1.21.1-4.0.0.jar
+        https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar
+        https://cdn.modrinth.com/data/B3pb093D/versions/hZ6B2Z0x/ritchiesprojectilelib-2.1.2%2Bmc.1.21.1-neoforge.jar
+        https://cdn.modrinth.com/data/T9PomCSv/versions/znvYZcVX/sable-neoforge-1.21.1-2.0.1.jar
+        https://cdn.modrinth.com/data/PrW3B4fH/versions/JRq5Yypd/sablebeyond-neoforge-1.21.1-v0.4.1.jar
+        https://cdn.modrinth.com/data/sZbcIrJb/versions/Ucq7afTi/sablephysicscompat-1.3.0.jar
+        https://cdn.modrinth.com/data/fX4dIQCo/versions/JwNCPaMu/scholar-neoforge-1.21.1-1.1.16.jar
+        https://cdn.modrinth.com/data/IyHq05yB/versions/Lw02ZJke/seamlesssleep-neoforge-1.21-2.5.3.jar
+        https://cdn.modrinth.com/data/GmjmRQ0A/versions/tyVnEa75/sliceanddice-forge-4.2.4.jar
+        https://cdn.modrinth.com/data/Bh6ZOMvp/versions/odppGdXf/smarterfarmers-1.21-2.2.4-neoforge.jar
+        https://cdn.modrinth.com/data/TyCTlI4b/versions/AhDDipOt/sophisticatedbackpacks-1.21.1-3.25.63.1912.jar
+        https://cdn.modrinth.com/data/nmoqTijg/versions/e2uzs6ju/sophisticatedcore-1.21.1-1.4.58.2026.jar
+        https://cdn.modrinth.com/data/ayPU0OHc/versions/eTz03Gfd/structure_layout_optimizer-neoforge-1.0.12.jar
+        https://cdn.modrinth.com/data/fFEIiSDQ/versions/Agn1kmUY/supplementaries-neoforge-1.21.1-3.6.8.jar
+        https://cdn.modrinth.com/data/vRYk0bv7/versions/HY8Ybozd/trashslot-neoforge-1.21.1-21.1.11.jar
+        https://cdn.modrinth.com/data/vBbPDuOs/versions/M1CyD3Uu/txnilib-neoforge-1.0.24-1.21.1.jar
+        https://cdn.modrinth.com/data/ZlX3EVmE/versions/qEFip2XZ/Updating%20World%20Icon-neoforge-1.21.1-1.0.1.jar
+        https://cdn.modrinth.com/data/9eGKb6K1/versions/eFhbQnrh/voicechat-neoforge-1.21.1-2.6.18.jar
+        https://cdn.modrinth.com/data/1eAoo2KR/versions/7TVdVtxF/yet_another_config_lib_v3-3.8.2%2B1.21.1-neoforge.jar
+        https://cdn.modrinth.com/data/Ua7DFN59/versions/ZB22DE9q/YungsApi-1.21.1-NeoForge-5.1.6.jar
+        https://cdn.modrinth.com/data/XNlO7sBv/versions/GQ9iNWkI/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar
+        https://cdn.modrinth.com/data/o1C1Dkj5/versions/D6aZn0Em/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar
+        https://cdn.modrinth.com/data/Z2mXHnxP/versions/iopJiJQp/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar
+        https://cdn.modrinth.com/data/3dT9sgt4/versions/yFjEcj2g/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar
+        https://cdn.modrinth.com/data/kidLKymU/versions/8U0dIfSM/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar
+        https://cdn.modrinth.com/data/ZYgyPyfq/versions/N2EpMhR7/YungsExtras-1.21.1-NeoForge-5.1.1.jar
+        https://cdn.modrinth.com/data/MVARlG2f/versions/9GjNW2Gf/Zeta-1.1-40.jar
+        https://cdn.modrinth.com/data/OnlVIpq5/versions/kWzQiCnV/zfastnoise-1.0.11%2B2%2B1.21.1%2Bneoforge.jar
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
