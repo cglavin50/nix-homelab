@@ -94,7 +94,6 @@ spec:
           - chunky
           - ferrite-core
           - spark
-          - luckperms:v5.4.150-neoforge
         allowedVersionType: alpha
       rcon:
         enabled: true
@@ -111,6 +110,8 @@ spec:
       dataDir:
         enabled: true
         size: 10Gi
+    extraEnv:
+      MODS: https://cdn.modrinth.com/data/Vebnzrzj/versions/dKAPoPGd/LuckPerms-NeoForge-5.4.150.jar
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
